@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BECORA COSMETICS — ORTIFIRM</title>
+<meta name="description" content="ORTIFIRM — Gel reafirmante con cabezal de 4 esferas de acero inoxidable. Tu cuerpo real es tu ideal.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --terracota: #C4714A;
+    --terracota-dark: #8B4E32;
+    --terracota-light: #E8C4A8;
+    --terracota-pale: #F5EAE0;
+    --olivo: #7A8650;
+    --olivo-dark: #4A5230;
+    --olivo-light: #B5BE8A;
+    --crema: #F2EBD9;
+    --crema-dark: #DDD0B0;
+    --carbon: #1A1512;
+    --marfil: #FAF6EF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--marfil);
+    color: var(--carbon);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(242, 235, 217, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(196, 113, 74, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 500;
+    letter-spacing: 0.35em; color: var(--terracota-dark);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--olivo-dark); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--terracota); }
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.7rem 1.8rem;
+    background: var(--terracota); color: var(--crema);
+    border: none; cursor: pointer;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--terracota-dark); }
+
+  /* Mobile nav */
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--terracota-dark); transition: all 0.3s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    background: var(--crema);
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--olivo); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 2.5rem; height: 0.5px;
+    background: var(--olivo);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--carbon); margin-bottom: 1rem;
+  }
+  .hero-title em { font-style: italic; color: var(--terracota); }
+  .hero-subtitle {
+    font-size: 0.9rem; line-height: 1.85; color: #5A4A3A;
+    max-width: 420px; margin-bottom: 3rem;
+    font-weight: 300; letter-spacing: 0.03em;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: var(--terracota); color: var(--crema);
+    border: none; cursor: pointer;
+    transition: all 0.3s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--terracota-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--olivo-dark); text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: color 0.3s;
+  }
+  .btn-ghost:hover { color: var(--terracota); }
+  .btn-ghost::after { content: '→'; font-size: 0.9rem; }
+
+  .hero-right {
+    background: var(--terracota-pale);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    min-height: 500px;
+  }
+  .deco-circle {
+    position: absolute; border-radius: 50%;
+    border: 0.5px solid rgba(196, 113, 74, 0.25);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .deco-circle:nth-child(1) { width: 300px; height: 300px; top: 20%; left: 15%; }
+  .deco-circle:nth-child(2) { width: 450px; height: 450px; top: 10%; left: 5%; animation-delay: 1s; }
+  .deco-circle:nth-child(3) { width: 200px; height: 200px; top: 55%; left: 55%; animation-delay: 2s; }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.9} }
+
+  /* Bottle SVG illustration */
+  .product-wrap {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .bottle-svg { width: 180px; filter: drop-shadow(6px 12px 24px rgba(0,0,0,0.15)); }
+
+  .hero-badge {
+    position: absolute; bottom: 2.5rem; left: 2.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.75); backdrop-filter: blur(8px);
+    padding: 0.75rem 1.25rem;
+    border: 0.5px solid rgba(196, 113, 74, 0.3);
+  }
+  .badge-text { font-size: 0.6rem; letter-spacing: 0.1em; color: #5A4A3A; line-height: 1.7; }
+  .badge-text strong { display: block; font-weight: 500; font-size: 0.65rem; }
+
+  /* ─── PHILOSOPHY STRIP ─── */
+  .philosophy-strip {
+    background: var(--terracota);
+    padding: 1.5rem 4rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .philosophy-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; font-style: italic;
+    color: var(--crema); letter-spacing: 0.04em;
+  }
+  .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(242,235,217,0.5); flex-shrink: 0; }
+
+  /* ─── STATS ─── */
+  .stats-strip {
+    background: var(--marfil);
+    border-top: 0.5px solid var(--crema-dark);
+    border-bottom: 0.5px solid var(--crema-dark);
+    display: grid; grid-template-columns: repeat(4,1fr);
+    text-align: center;
+  }
+  .stat-item { padding: 2.5rem 1rem; border-right: 0.5px solid var(--crema-dark); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--terracota);
+    line-height: 1; display: block;
+  }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8A7A6A; margin-top: 0.5rem; display: block; }
+
+  /* ─── SECTIONS COMMON ─── */
+  section { padding: 7rem 5rem; }
+  .section-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--terracota); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300;
+    line-height: 1.1; color: var(--carbon); margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--terracota); }
+  .section-body {
+    font-size: 0.9rem; line-height: 1.9; color: #5A4A3A;
+    font-weight: 300; max-width: 520px;
+  }
+
+  /* ─── RITUAL ─── */
+  .ritual {
+    background: var(--carbon);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center;
+  }
+  .ritual .section-title { color: var(--crema); }
+  .ritual .section-eyebrow { color: var(--olivo-light); }
+  .ritual .section-body { color: #A89880; max-width: none; }
+  .ritual-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+  .ritual-step { display: grid; grid-template-columns: 3rem 1fr; gap: 1.25rem; align-items: flex-start; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: var(--terracota); line-height: 1;
+  }
+  .step-title {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--crema); margin-bottom: 0.4rem; font-weight: 400;
+  }
+  .step-desc { font-size: 0.8rem; color: #7A6A5A; line-height: 1.7; font-weight: 300; }
+
+  .ritual-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+  .roller-ring {
+    position: absolute; width: 320px; height: 320px; border-radius: 50%;
+    border: 0.5px solid rgba(196, 113, 74, 0.2);
+    animation: spinSlow 20s linear infinite;
+  }
+  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .roller-diagram {
+    width: 280px; height: 280px; border-radius: 50%;
+    border: 0.5px solid rgba(196, 113, 74, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .roller-inner {
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(196, 113, 74, 0.06);
+    border: 0.5px solid rgba(196, 113, 74, 0.2);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    align-items: center; justify-items: center;
+    padding: 30px;
+  }
+  .roller-ball-lg {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #D0D0D0, #909090, #606060);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4), inset -3px -3px 6px rgba(255,255,255,0.2);
+  }
+  .roller-label {
+    position: absolute; bottom: -2.5rem;
+    font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--terracota); text-align: center; width: 200%;
+    left: -50%;
+  }
+
+  /* ─── APP SECTION ─── */
+  .app-section {
+    background: var(--crema);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center;
+  }
+  .app-phone {
+    width: 200px; height: 400px;
+    background: var(--carbon);
+    border-radius: 32px; margin: 0 auto;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 8px 16px 48px rgba(0,0,0,0.2);
+  }
+  .phone-notch {
+    width: 80px; height: 20px; border-radius: 0 0 12px 12px;
+    background: #0D0B09; margin: 0 auto;
+    border: 2px solid rgba(255,255,255,0.08);
+  }
+  .phone-screen { flex: 1; background: var(--terracota-pale); display: flex; flex-direction: column; padding: 1rem; }
+  .phone-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .phone-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--terracota-dark); font-weight: 600; }
+  .phone-tag { font-size: 0.45rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--terracota); color: var(--crema); padding: 2px 6px; border-radius: 2px; }
+  .phone-ritual-title { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-weight: 300; font-style: italic; color: var(--carbon); margin-bottom: 0.75rem; line-height: 1.3; }
+  .phone-progress { display: flex; gap: 4px; margin-bottom: 0.75rem; }
+  .progress-dot { height: 2px; flex: 1; border-radius: 1px; background: var(--crema-dark); }
+  .progress-dot.active { background: var(--terracota); }
+  .phone-video-area {
+    flex: 1; background: rgba(196, 113, 74, 0.12);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .play-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(196,113,74,0.85); display: flex; align-items: center; justify-content: center; }
+  .play-btn::after { content: ''; border-left: 10px solid white; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; }
+  .phone-rituals { display: flex; flex-direction: column; gap: 4px; }
+  .ritual-chip { background: white; border-radius: 4px; padding: 4px 8px; font-size: 0.45rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--olivo-dark); display: flex; align-items: center; gap: 6px; }
+  .ritual-chip::before { content: '◇'; color: var(--terracota); font-size: 0.5rem; }
+
+  .app-features { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; }
+  .app-feature { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; border: 0.5px solid rgba(196,113,74,0.2); background: rgba(255,255,255,0.5); transition: border-color 0.3s; }
+  .app-feature:hover { border-color: var(--terracota); }
+  .feature-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--terracota-pale); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; color: var(--terracota-dark); }
+  .feature-text h4 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--carbon); font-weight: 500; margin-bottom: 0.3rem; }
+  .feature-text p { font-size: 0.78rem; color: #7A6A5A; line-height: 1.6; font-weight: 300; }
+
+  /* ─── INGREDIENTS ─── */
+  .ingredients { background: var(--marfil); }
+  .ingredients-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 4rem; }
+  .ingredient-card {
+    padding: 3rem 2.5rem; background: var(--crema);
+    position: relative; overflow: hidden;
+    transition: transform 0.4s;
+  }
+  .ingredient-card:hover { transform: translateY(-4px); }
+  .ingredient-card::before {
+    content: attr(data-num);
+    position: absolute; top: -1rem; right: -0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem; font-weight: 300; color: rgba(196,113,74,0.07); line-height: 1;
+  }
+  .ingredient-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+  .ingredient-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; font-style: italic; color: var(--terracota-dark); margin-bottom: 0.5rem; }
+  .ingredient-latin { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--olivo); margin-bottom: 1.25rem; display: block; }
+  .ingredient-desc { font-size: 0.82rem; color: #6A5848; line-height: 1.8; font-weight: 300; }
+  .ingredient-benefit { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid rgba(196,113,74,0.2); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracota); }
+
+  /* ─── MANIFESTO ─── */
+  .manifesto {
+    background: var(--olivo-dark);
+    text-align: center; padding: 8rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .manifesto::before {
+    content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    border: 0.5px solid rgba(181,190,138,0.12); top: -200px; left: -150px;
+  }
+  .manifesto::after {
+    content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    border: 0.5px solid rgba(181,190,138,0.12); bottom: -200px; right: -150px;
+  }
+  .manifesto-label { font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--olivo-light); margin-bottom: 3rem; position: relative; }
+  .manifesto-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 4.2rem); font-weight: 300; color: var(--crema); line-height: 1.2; max-width: 900px; margin: 0 auto; position: relative; }
+  .manifesto-text em { font-style: italic; color: var(--terracota-light); }
+  .manifesto-divider { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 2.5rem auto; position: relative; }
+  .manifesto-divider span { display: block; width: 40px; height: 0.5px; background: rgba(181,190,138,0.4); }
+  .manifesto-divider em { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--terracota-light); font-style: italic; }
+  .manifesto-sub { font-size: 0.85rem; color: var(--olivo-light); font-weight: 300; line-height: 1.9; max-width: 580px; margin: 0 auto; position: relative; }
+
+  /* ─── FOUNDERS ─── */
+  .founders { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 0; }
+  .founder-card { padding: 5rem 4rem; background: var(--crema); }
+  .founder-card:first-child { background: var(--terracota-pale); }
+  .founder-avatar { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--terracota); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--terracota-dark); margin-bottom: 1.5rem; background: rgba(255,255,255,0.5); }
+  .founder-tag { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--olivo); margin-bottom: 0.5rem; }
+  .founder-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--carbon); margin-bottom: 0.25rem; }
+  .founder-role { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracota); font-weight: 400; margin-bottom: 1.5rem; }
+  .founder-bio { font-size: 0.85rem; color: #6A5848; line-height: 1.9; font-weight: 300; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta { background: var(--terracota); text-align: center; padding: 8rem 4rem; position: relative; overflow: hidden; }
+  .final-cta::before { content: 'ORTIFIRM'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-size: 14rem; font-weight: 300; color: rgba(255,255,255,0.05); white-space: nowrap; pointer-events: none; }
+  .cta-eyebrow { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 2rem; position: relative; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 300; color: var(--crema); line-height: 1.1; margin-bottom: 1.5rem; position: relative; }
+  .cta-sub { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 3rem; font-weight: 300; position: relative; }
+  .cta-buttons { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; position: relative; }
+  .btn-light { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 1.1rem 2.8rem; background: var(--crema); color: var(--terracota-dark); border: none; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; font-weight: 500; }
+  .btn-light:hover { background: white; transform: translateY(-2px); }
+  .btn-outline-light { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 1.1rem 2.8rem; background: transparent; color: var(--crema); border: 1px solid rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
+  .btn-outline-light:hover { border-color: white; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--carbon); padding: 4rem 5rem 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; letter-spacing: 0.3em; color: var(--crema); font-weight: 300; display: block; margin-bottom: 1rem; }
+  .footer-tagline { font-size: 0.75rem; color: #7A6A5A; font-weight: 300; font-style: italic; }
+  .footer-col h5 { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--olivo-light); margin-bottom: 1.25rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a { font-size: 0.78rem; color: #7A6A5A; text-decoration: none; transition: color 0.3s; }
+  .footer-col ul a:hover { color: var(--terracota-light); }
+  .footer-bottom { grid-column: 1/-1; margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-size: 0.65rem; color: #4A3A2A; }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  [data-reveal].revealed { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 60px; left: 0; width: 100%; background: var(--crema); padding: 2rem; gap: 1.5rem; border-bottom: 0.5px solid var(--crema-dark); z-index: 99; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 2rem 3rem; }
+    .hero-right { min-height: 350px; }
+
+    .ritual, .app-section { grid-template-columns: 1fr; gap: 3rem; }
+    .ritual { padding: 4rem 2rem; }
+    .app-section { padding: 4rem 2rem; }
+    .ritual-visual { order: -1; }
+
+    .ingredients-grid { grid-template-columns: 1fr; }
+    .founders { grid-template-columns: 1fr; }
+    .founder-card { padding: 3rem 2rem; }
+
+    section { padding: 4rem 2rem; }
+    .ingredients { padding: 4rem 2rem; }
+    .manifesto { padding: 5rem 2rem; }
+    .final-cta { padding: 5rem 2rem; }
+    .final-cta::before { font-size: 5rem; }
+
+    footer { grid-template-columns: 1fr 1fr; padding: 3rem 2rem 1.5rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+    .stats-strip { grid-template-columns: repeat(2,1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-right: 0.5px solid var(--crema-dark); border-top: 0.5px solid var(--crema-dark); }
+    .stat-item:nth-child(4) { border-top: 0.5px solid var(--crema-dark); }
+
+    .philosophy-strip { gap: 1.5rem; padding: 1.5rem 2rem; }
+    .strip-dot { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BECORA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#ritual">El Ritual</a></li>
+    <li><a href="#app">Web App</a></li>
+    <li><a href="#ingredientes">Botánica</a></li>
+    <li><a href="#nosotras">Creadoras</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Adquirir Ortifirm</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left" data-reveal>
+    <p class="hero-eyebrow">Nuevo lanzamiento — Beauty Tech Ecuador</p>
+    <h1 class="hero-title">
+      Tu cuerpo<br>
+      <em>real</em> es<br>
+      tu ideal.
+    </h1>
+    <p class="hero-subtitle">
+      ORTIFIRM fusiona la sabiduría botánica de la ortiga con tecnología de masaje de cuatro esferas en acero inoxidable. No prometemos transformaciones. Te ofrecemos un ritual.
+    </p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Descubrir Ortifirm</a>
+      <a href="#app" class="btn-ghost">Iniciar mi rutina</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="deco-circle"></div>
+    <div class="deco-circle"></div>
+    <div class="deco-circle"></div>
+    <div class="product-wrap">
+      <!-- Bottle SVG -->
+      <svg class="bottle-svg" viewBox="0 0 180 420" xmlns="http://www.w3.org/2000/svg">
+        <!-- Neck -->
+        <rect x="65" y="60" width="50" height="55" rx="6" fill="#DDD0B0"/>
+        <!-- Cap -->
+        <rect x="68" y="35" width="44" height="32" rx="14" fill="#8B4E32"/>
+        <text x="90" y="56" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" fill="#E8C4A8" letter-spacing="1">B</text>
+        <!-- Body -->
+        <rect x="25" y="110" width="130" height="240" rx="48" fill="url(#bottleGrad)"/>
+        <!-- Sheen -->
+        <rect x="35" y="130" width="20" height="100" rx="10" fill="rgba(255,255,255,0.18)"/>
+        <!-- Label area -->
+        <rect x="38" y="175" width="104" height="100" rx="4" fill="rgba(255,255,255,0.12)"/>
+        <text x="90" y="208" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" font-weight="600" fill="#8B4E32" letter-spacing="3">ORTIFIRM</text>
+        <text x="90" y="224" text-anchor="middle" font-family="Jost, sans-serif" font-size="6" fill="#7A8650" letter-spacing="2">GEL REAFIRMANTE</text>
+        <line x1="55" y1="233" x2="125" y2="233" stroke="#C4714A" stroke-width="0.5" opacity="0.4"/>
+        <text x="90" y="248" text-anchor="middle" font-family="Jost, sans-serif" font-size="5.5" fill="#8B7060" letter-spacing="1.5">BECORA COSMETICS</text>
+        <text x="90" y="262" text-anchor="middle" font-family="Jost, sans-serif" font-size="5" fill="#A89880" letter-spacing="1">150 ml</text>
+        <!-- Roller base -->
+        <rect x="48" y="348" width="84" height="22" rx="4" fill="#C4B48A"/>
+        <!-- Roller balls -->
+        <circle cx="62" cy="370" r="14" fill="url(#ballGrad)"/>
+        <circle cx="82" cy="370" r="14" fill="url(#ballGrad)"/>
+        <circle cx="102" cy="370" r="14" fill="url(#ballGrad)"/>
+        <circle cx="122" cy="370" r="14" fill="url(#ballGrad)"/>
+        <!-- Shine on balls -->
+        <circle cx="58" cy="365" r="4" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="78" cy="365" r="4" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="98" cy="365" r="4" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="118" cy="365" r="4" fill="rgba(255,255,255,0.35)"/>
+        <defs>
+          <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F0E8D8"/>
+            <stop offset="50%" stop-color="#DDD0B0"/>
+            <stop offset="100%" stop-color="#C4B48A"/>
+          </linearGradient>
+          <linearGradient id="ballGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E0E0E0"/>
+            <stop offset="50%" stop-color="#A0A0A0"/>
+            <stop offset="100%" stop-color="#606060"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-text">
+        <strong>4 Esferas · Acero Inoxidable 316L</strong>
+        Tecnología de drenaje profesional
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY STRIP -->
+<div class="philosophy-strip">
+  <p>"Tu cuerpo real es tu ideal"</p>
+  <div class="strip-dot"></div>
+  <p>Ritual · Botánica · Tecnología</p>
+  <div class="strip-dot"></div>
+  <p>Hecho con intención, no con filtros</p>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip" data-reveal>
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Esferas de acero inoxidable</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Activos botánicos certificados</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">∞</span>
+    <span class="stat-label">Rituales personalizados</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">0</span>
+    <span class="stat-label">Promesas milagrosas</span>
+  </div>
+</div>
+
+<!-- RITUAL -->
+<section class="ritual" id="ritual">
+  <div data-reveal>
+    <p class="section-eyebrow">El Smart-Ritual</p>
+    <h2 class="section-title" style="color:var(--crema)">
+      Cuatro esferas.<br>
+      Un <em>ritual</em><br>
+      completo.
+    </h2>
+    <p class="section-body">
+      El cabezal de cuatro rodillos de acero inoxidable no es un accesorio: es el corazón de ORTIFIRM. Su temperatura naturalmente fría activa los receptores de frío en la piel, reduciendo la inflamación visible y preparando el tejido para absorber cada activo botánico del gel.
+    </p>
+    <div class="ritual-steps">
+      <div class="ritual-step">
+        <span class="step-num">01</span>
+        <div>
+          <p class="step-title">Aplicar &amp; Activar</p>
+          <p class="step-desc">Dispensa el gel sobre la zona a trabajar. La fórmula de ortiga crea una base deslizante perfecta para los rodillos.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="step-num">02</span>
+        <div>
+          <p class="step-title">Drenaje con Frío</p>
+          <p class="step-desc">Las esferas de acero masajean en movimientos ascendentes activando el drenaje linfático. Para potenciar el efecto, refrigera el frasco 10 minutos antes.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="step-num">03</span>
+        <div>
+          <p class="step-title">Absorción Profunda</p>
+          <p class="step-desc">La presión de los 4 rodillos simultáneos crea microestimulación que potencia la penetración de los activos reafirmantes hasta los tejidos más profundos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ritual-visual" data-reveal>
+    <div class="roller-ring"></div>
+    <div class="roller-diagram">
+      <div class="roller-inner">
+        <div class="roller-ball-lg"></div>
+        <div class="roller-ball-lg"></div>
+        <div class="roller-ball-lg"></div>
+        <div class="roller-ball-lg"></div>
+      </div>
+      <p class="roller-label">Cabezal ORTIFIRM · Acero Inoxidable 316L</p>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="app-section" id="app">
+  <div data-reveal style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
+    <div class="app-phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-header">
+          <span class="phone-logo">BECORA</span>
+          <span class="phone-tag">Smart Ritual</span>
+        </div>
+        <p class="phone-ritual-title">Ritual de Drenaje Matutino</p>
+        <div class="phone-progress">
+          <div class="progress-dot active"></div>
+          <div class="progress-dot active"></div>
+          <div class="progress-dot"></div>
+          <div class="progress-dot"></div>
+        </div>
+        <div class="phone-video-area">
+          <div class="play-btn"></div>
+        </div>
+        <div class="phone-rituals">
+          <div class="ritual-chip">Drenaje · 8 min</div>
+          <div class="ritual-chip">Tonificación · 6 min</div>
+          <div class="ritual-chip">Desinflamación · 5 min</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--terracota);">
+      becora.com/ritual
+    </p>
+  </div>
+  <div data-reveal>
+    <p class="section-eyebrow">La Web App</p>
+    <h2 class="section-title">
+      Escanea.<br>
+      <em>Tu ritual</em><br>
+      te espera.
+    </h2>
+    <p class="section-body">
+      Cada frasco de ORTIFIRM lleva impreso un código QR que desbloquea tu ritual personal. Sin descargas, sin suscripciones. Accede desde tu navegador a rutinas de masaje guiadas en video, diseñadas según tu objetivo del día.
+    </p>
+    <div class="app-features">
+      <div class="app-feature">
+        <div class="feature-icon">◈</div>
+        <div class="feature-text">
+          <h4>Rutina de Drenaje</h4>
+          <p>Para amaneceres con volumen o retención de líquidos. Técnica linfática adaptada con los 4 rodillos en movimientos ascendentes.</p>
+        </div>
+      </div>
+      <div class="app-feature">
+        <div class="feature-icon">◇</div>
+        <div class="feature-text">
+          <h4>Rutina de Tonificación</h4>
+          <p>Masaje de estimulación profunda para mejorar la firmeza del tejido. Ideal como ritual de noche, potenciado con el gel frío.</p>
+        </div>
+      </div>
+      <div class="app-feature">
+        <div class="feature-icon">○</div>
+        <div class="feature-text">
+          <h4>Rutina de Desinflamación</h4>
+          <p>Movimientos suaves y envolventes para días de sensibilidad. La temperatura fría del acero + la manzanilla del gel crean efecto calmante inmediato.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients" id="ingredientes">
+  <div data-reveal style="max-width:700px;">
+    <p class="section-eyebrow">Botánica Activa</p>
+    <h2 class="section-title">
+      La naturaleza<br>
+      formulada con<br>
+      <em>rigor científico.</em>
+    </h2>
+    <p class="section-body">
+      Tres plantas seleccionadas por nuestra cosmiatra, que trabajan en sinergia. No hay relleno en la fórmula. Cada ingrediente cumple una función específica y medible.
+    </p>
+  </div>
+  <div class="ingredients-grid" data-reveal>
+    <div class="ingredient-card" data-num="I">
+      <span class="ingredient-icon">🌿</span>
+      <span class="ingredient-latin">Urtica dioica</span>
+      <h3 class="ingredient-name">Ortiga</h3>
+      <p class="ingredient-desc">Un aroma verde, ligeramente terroso y vigorizante. La ortiga estimula la microcirculación y aporta flavonoides que apoyan la firmeza y elasticidad del tejido dérmico. Su extracto es el alma de ORTIFIRM.</p>
+      <p class="ingredient-benefit">Reafirmante · Circulatorio · Antioxidante</p>
+    </div>
+    <div class="ingredient-card" data-num="II">
+      <span class="ingredient-icon">🌼</span>
+      <span class="ingredient-latin">Matricaria chamomilla</span>
+      <h3 class="ingredient-name">Manzanilla</h3>
+      <p class="ingredient-desc">Un aroma suave y levemente dulce, como flores secas al sol. Su bisabolol calma la irritación cutánea, potencia la barrera hidrolipídica y amplifica el efecto antiinflamatorio del masaje con frío.</p>
+      <p class="ingredient-benefit">Calmante · Antiinflamatorio · Hidratante</p>
+    </div>
+    <div class="ingredient-card" data-num="III">
+      <span class="ingredient-icon">🌱</span>
+      <span class="ingredient-latin">Rosmarinus officinalis</span>
+      <h3 class="ingredient-name">Romero</h3>
+      <p class="ingredient-desc">Herbal, fresco, casi mentolado. El romero es el activador del ritual: estimula la circulación local, aporta un efecto tonificante inmediato y actúa como conservante natural de la fórmula.</p>
+      <p class="ingredient-benefit">Tonificante · Circulatorio · Conservante natural</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <p class="manifesto-label">Manifiesto BECORA</p>
+  <h2 class="manifesto-text" data-reveal>
+    En BECORA no usamos filtros<br>
+    porque tu piel <em>real</em><br>
+    no necesita corrección.<br>
+    Necesita atención.
+  </h2>
+  <div class="manifesto-divider">
+    <span></span>
+    <em>✦</em>
+    <span></span>
+  </div>
+  <p class="manifesto-sub" data-reveal>
+    Cada cuerpo tiene su propio ritmo, su historia, sus marcas. Creemos que la belleza no se alcanza; se cultiva. BECORA nace para acompañar ese proceso con ciencia, honestidad y un ritual diario que te pertenece a ti, no a ningún estándar.
+    <br><br>
+    No prometemos milagros. Te entregamos herramientas reales para sentirte bien en el cuerpo que ya tienes.
+  </p>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders" id="nosotras">
+  <div class="founder-card" data-reveal>
+    <div class="founder-avatar">AM</div>
+    <p class="founder-tag">Co-fundadora</p>
+    <h3 class="founder-name">Ana Mirely</h3>
+    <p class="founder-role">Estrategia &amp; Tecnología</p>
+    <p class="founder-bio">Detrás de cada decisión de BECORA —desde la paleta de colores hasta el flujo del QR— hay una mente estratégica obsesionada con la experiencia del usuario. Ana Mirely construyó el ecosistema digital de la marca con una premisa clara: que la tecnología sirva al ritual, no al revés.<br><br>Su visión une el mundo del beauty-tech con la identidad latinoamericana sin complejos y sin filtros.</p>
+  </div>
+  <div class="founder-card" data-reveal>
+    <div class="founder-avatar">K</div>
+    <p class="founder-tag">Co-fundadora</p>
+    <h3 class="founder-name">Katy</h3>
+    <p class="founder-role">Ciencia Cosmiátrica</p>
+    <p class="founder-bio">La fórmula de ORTIFIRM es el resultado de años de práctica cosmiátrica y una búsqueda honesta de activos que funcionen. Katy se negó a formular con promesas; formuló con evidencia.<br><br>Su conocimiento de la piel latinoamericana, sus particularidades y sus necesidades reales es lo que convierte a BECORA en algo más que un cosmético: es un ritual con respaldo científico.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <p class="cta-eyebrow">¿Lista para tu primer ritual?</p>
+  <h2 class="cta-title">ORTIFIRM<br>te espera.</h2>
+  <p class="cta-sub">Envíos a todo Ecuador · Pago con tarjeta o transferencia local</p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-light">Comprar Ortifirm</a>
+    <a href="#app" class="btn-outline-light">Explorar rutinas guiadas</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <span class="footer-logo">BECORA</span>
+    <p class="footer-tagline">"Tu cuerpo real es tu ideal."</p>
+  </div>
+  <div class="footer-col">
+    <h5>Producto</h5>
+    <ul>
+      <li><a href="#">ORTIFIRM Gel</a></li>
+      <li><a href="#">Ingredientes</a></li>
+      <li><a href="#ritual">El Smart-Ritual</a></li>
+      <li><a href="#app">Web App Rutinas</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Marca</h5>
+    <ul>
+      <li><a href="#">Nuestra historia</a></li>
+      <li><a href="#">Manifiesto</a></li>
+      <li><a href="#nosotras">Las creadoras</a></li>
+      <li><a href="#">Prensa</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Contacto</h5>
+    <ul>
+      <li><a href="mailto:hola@becoracosmetics.com">hola@becoracosmetics.com</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">TikTok</a></li>
+      <li><a href="#">Envíos Ecuador</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 BECORA COSMETICS — Hecho en Ecuador con intención.</p>
+    <p>Política de privacidad · Términos de uso</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
